@@ -10,6 +10,7 @@ $(document).ready ->
           beforeSend: ->
             $('#loading').show() #show loading
             $('#submit').removeAttr('disabled'); #disabled field submit
+            $('#quantity').attr('disabled','disabled');
           data: {
                   currency: $("#currency").val(),
                   currency_destination: $("#currency_destination").val(),
@@ -22,28 +23,14 @@ $(document).ready ->
             if currency != "" # if currency is diferent of blank
                 $('#result').val(data.value) #put value in field result
                 $('#loading').hide(); #hide loading
-          #during submit
-          $('form').submit ->
-              if $('form').attr('action') == '/exchange'
-                $.ajax '/exchange',
-                    type: 'POST'
-                    dataType: 'json',
-                    beforeSend: ->
-                        $('#submit').attr('disabled','disabled'); #disable field submit
-                        $('#loading').show() #show loading
-                        $('#submit').removeAttr('disabled'); #enable field submit
-                    data: {
-                            currency: $("#currency_destination").val(),
-                            currency_destination: $("#currency").val(),
-                            quantity: $("#quantity").val()
-                          }
-                    error: (jqXHR, textStatus, errorThrown) ->
-                      alert textStatus
-                    success: (data, text, jqXHR) ->
-                      currency = $("#currency option:selected").text() #get value field currency
-                      currency_destination = $("#currency_destination option:selected").text() #get value field currency_destination
-                      $("#currency").val(currency_destination)
-                      $("#currency_destination").val(currency)
-                      $('#result').val(data.value) #put value in field result
-                      $('#loading').hide(); #hide loading
-                  return false;
+                $('#quantity').removeAttr('disabled');
+
+    #during submit
+    $('#invert_currency').click ->
+            currency = $("#currency option:selected").text() #get value field currency
+            currency_destination = $("#currency_destination option:selected").text() #get value field
+            $("#currency").val(currency_destination) #set val of currency_destination in currency
+            $("#currency_destination").val(currency) #set val of currency in currency_destination
+            $("#currency").change()
+            $('#quantity').removeAttr('disabled');
+            return false;
