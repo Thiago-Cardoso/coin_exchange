@@ -14,11 +14,9 @@
             <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Quantidade ($10)" step="any" required>
           </div>
         </div>
-        <div class="col-lg-3 offset-lg-1 col-md-12 exchange_box">
-          <div class="row">
-               <button type="submit" id="invert_currency" title="Inverter Valores de moeda"><%= image_tag '/refresh.png', class: "img-responsive"%></button>
-          </div>
-        </div>
+        <button id="invert_currency" type="button" title="Inverter Valores de moeda" class="btn btn-primary col-md-12">
+          <%= image_tag '/refresh.png', class: "img-responsive"%></button>
+        </button>
         <div class="destination_currency">
           <div class="form-group">
             <p class="title">Moeda Pretendida</p>
