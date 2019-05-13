@@ -1,32 +1,96 @@
-# coin_exchange
-App for conversion of coin
 
-Requirements:
-(Docker) -
-File dockerfile, this file is in project
-Rails 5.1
-Ruby: 2.3-slim
+<p align="center">  Easily convert your currencies to any currency in the World! </p>
 
-Install docker:
-curl -fsSL get.docker.com -o get-docker.sh
-bash get-docker.sh
-sudo usermod -aG docker YOUR_USER_NAME
-docker --version
+<p align="center">
+ <a href="https://www.codeship.io/projects/318900">
+  <img alt="Codeship Status" src="https://app.codeship.com/projects/8cf882a0-e2b7-0136-b148-5e3361b0d88e/status?branch=master" target="_blank">
+  </a>
+  <a href="https://ruby-doc.org/core-2.5.1/">
+	<img alt="Ruby Version" src="https://img.shields.io/badge/Ruby-2.5.1 -green.svg" target="_blank">
+</a>
+<a href="https://guides.rubyonrails.org/v5.1/">
+	<img alt="" src="https://img.shields.io/badge/Rails-~%3E%205.0.1-blue.svg" target="_blank">
+ </a>
+  
+  </p>
 
-Docker-composer:
-sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+Make the conversion of an amount X of one currency (for example BRL) into a corresponding amount of another (for example EUR).
 
-Gemfile:
-gem file is configured:
-gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'rest-client' (utilizing for consume webservice http://api.fixer.io/latest?base)
-Utilizing in group test - for test app with capybara and rspec
 
-  gem 'capybara'
-  gem 'rspec-rails', '~> 3.5'
+## Screenshot
+<p align="center">
+  <a href="https://cointcardosoexchange.herokuapp.com/"><img alt="Coin Exchange" src="https://github.com/Thiago-Cardoso/coin_exchange/blob/master/Screenshot%20from%202018-01-14%2023.38.08.png" width="720px"></a>
+</p>
 
-Lib/exchange.rb:  this package is lib that consume webservice
+## Stack the Project
 
-Features for app: Convert of coin , Reverse coin of button
+
+* **Rest-client**
+* **Postgresql**
+* **Codeship**
+* **Rspec**
+* **Heroku**
+
+## Features
+Dynamic query (without the need for the button converter).
+Possibility of changing the currencies.
+
+
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites 
+You must have installed on your machine:
+- Docker
+- Docker Compose
+
+### Installing
+First step is to install the docker service:
+```bash
+#Linux: ubuntu,Mint
+$ sudo apt-get update
+$ sudo apt-get install docker-ce
+$ sudo apt install docker-compose
+
+# Fedora(27,28,29)
+$ sudo dnf update -y
+$ sudo dnf install docker-ce
+$ sudo dnf -y install docker-compose
+```
+For test if the service was installed with succeed, you can run the command for to check de version of docker:
+```bash
+$ docker --version
+#Must be have the docker version: Docker version 18.06.0-ce 
+$ docker-compose --version
+#Must be have the docker-compose version: docker-compose version 1.22.0
+```
+
+## First steps
+Follow the instructions to have a project present and able to run it locally.
+After copying the repository to your machine, go to the project's root site and:
+1.  Construct the container
+```
+docker-compose build
+```
+2.  Create of Database
+```
+docker-compose run --rm website bundle exec rails db:create
+```
+3.  Up the project
+```
+docker-compose up
+```
+4. Without turning off the server, open a new window and run the migrations
+```
+docker-compose run --rm website bundle exec rails db:migrate #if necessary populate database
+```
+
+## Running the tests
+To run the tests, you must run the docker container through the command:
+```
+docker-compose run --rm website bundle exec rspec
+```
+## Authors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+[<img src="https://avatars1.githubusercontent.com/u/1753070?s=460&v=4" width="100px;"/><br /><sub><b>Thiago Cardoso</b></sub>](https://github.com/Thiago-Cardoso)<br />
