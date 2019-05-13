@@ -2,7 +2,7 @@
 <p align="center">  Easily convert your currencies to any currency in the World! </p>
 
 <p align="center">
- <a href="https://www.codeship.io/projects/318900">
+ <a href="https://app.codeship.com/projects/263675">
   <img alt="Codeship Status" src="https://app.codeship.com/projects/8cf882a0-e2b7-0136-b148-5e3361b0d88e/status?branch=master" target="_blank">
   </a>
   <a href="https://ruby-doc.org/core-2.5.1/">
